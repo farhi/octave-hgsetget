@@ -44,7 +44,7 @@
 
 ## Author: Farhi
 
-classdef hgsetget < handle
+classdef (Abstract) hgsetget < handle
   
   ## methods --------------------------------------------------------------------
   methods
