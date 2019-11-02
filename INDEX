@@ -1,0 +1,6 @@
+hgsetget >> Handle Graphics Set Get Superclass
+Main class
+ @hgsetget/set
+ @hgsetget/get
+
+

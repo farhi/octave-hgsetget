@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>octave-hgsetget</id>
+  <extends>www.octave.org-octave.desktop</extends>
+  <name>Handle Graphics Set Get Superclass</name>
+  <summary>Superclass used to derive handle class with set and get methods</summary>
+  <description>
+    <p>This superclass allows to add set and get methods to a subclass.
+    </p>
+  </description>
+  <keywords>
+    <keyword>classdef</keyword>
+    <keyword>properties</keyword>
+    <keyword>set</keyword>
+    <keyword>get</keyword>
+  </keywords>
+  <url type="homepage">https://github.com/farhi/octave-hgsetget</url>
+  <url type="bugtracker">https://github.com/farhi/octave-hgsetget/issues</url>
+  <project_license>GPL-2</project_license>
+  <update_contact>emmanuel.farhi@synchrotron-soleil.fr</update_contact>
+  <metadata_license>FSFAP</metadata_license>
+</component>

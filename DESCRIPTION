@@ -1,0 +1,10 @@
+Name: hgsetget
+Version: 0.1
+Date: 2019-11-02
+Author: Emmanuel Farhi
+Maintainer: emmanuel.farhi@synchrotron-soleil.fr
+Title: Handle Graphics Set Get
+Description: Superclass used to derive handle class with set and get methods
+Depends: octave (>= 4.0.0)
+License: GPLv2, public domain
+Url: https://github.com/farhi/octave-hgsetget

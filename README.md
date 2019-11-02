@@ -32,9 +32,18 @@ get(obj,'field1')
 
 ```
 
+Installation
+============
+Install [hgsetget-0.1](https://github.com/farhi/octave-hgsetget/releases/download/0.1/hgsetget.tar.gz) manually with:
+
+- wget https://github.com/farhi/octave-hgsetget/releases/download/0.1/hgsetget.tar.gz
+- launch octave
+- pkg install hgsetget.tar.gz
+- pkg load hgsetget
+
 Example
 =======
-You may test the ```hgsetget`` class by running:
+You may test the ```hgsetget``` class by running [hgsetget_demo](https://raw.githubusercontent.com/farhi/octave-hgsetget/master/example/hgsetget_demo.m)::
 ```octave
 addpath /path/to/octave-hgsetget
 hgsetget_demo
