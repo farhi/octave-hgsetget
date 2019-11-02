@@ -1,4 +1,4 @@
-% A simple hgsetget class.
+## A simple hgsetget class.
 classdef hgsetget_class < hgsetget
 
   properties

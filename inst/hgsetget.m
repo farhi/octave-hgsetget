@@ -48,7 +48,7 @@ classdef (Abstract) hgsetget < handle
   
   ## methods --------------------------------------------------------------------
   methods
-    function s = set(s, varargin)
+    function s = set (s, varargin)
     ## -*- texinfo -*-
     ## @deftypefn  {Function File} @var{VAL} = get (@var{H}, @var{P})
     ##  Return the value of the named property @var{P} from the object @var{H}.
@@ -61,61 +61,61 @@ classdef (Abstract) hgsetget < handle
     ## @seealso{get}
     ## @end deftypefn
 
-      field='';
+      field="";
       value=[];
-      if nargin >=2,  field=varargin{1}; end
-      if nargin >=3,  value=varargin{2}; end
-      if isempty(field), s = fieldnames(s); return; end
+      if (nargin >=2),  field = varargin{1}; endif
+      if (nargin >=3),  value = varargin{2}; endif
+      if (isempty(field)), s = fieldnames (s); return; endif
       
       ## handle array of objects
-      if numel(s) > 1
+      if (numel(s) > 1)
         for index=1:numel(s)
-          s(index) = set(s(index), field, value);
-        end
+          s (index) = set (s (index), field, value);
+        endfor
         return
-      end
+      endif
       
-      if ischar(field) && size(field, 1) > 1
-        field = cellstr(field);
-      end
+      if (ischar (field) && size (field, 1) > 1)
+        field = cellstr (field);
+      endif
       
       ## handle array/cell of fields
-      if iscellstr(field)
+      if (iscellstr (field))
         for index=1:numel(field)
-          s(index) = set(s, field{index}, value);
-        end
+          s (index) = set (s, field {index}, value);
+        endfor
         return
-      end
+      endif
       
-      if ~ischar(field)
-        error([ mfilename ': SET: field to set in object, must be a char or cellstr, not ' class(field) ]);
-      end
+      if (~ischar(field))
+        error ([ mfilename ": SET: field to set in object, must be a char or cellstr, not " class (field) ]);
+      endif
       
       ## cut the field into pieces with '.' as separator
-      [tok, rem] = strtok(field, '.');
+      [tok, rem] = strtok (field, ".");
       
-      if ~isfield(s, tok)
+      if (~isfield (s, tok))
         s.(tok) = [];
-      end
+      endif
       
       ## when rem is empty, we are were to set the value
-      if isempty(rem)
-        s = setfield(s, tok, value);
+      if (isempty (rem))
+        s = setfield (s, tok, value);
         return
-      end
+      endif
       
       ## else get the sub-struct
-      s2 = getfield(s, tok);
+      s2 = getfield (s, tok);
       
       ## access deeper content recursively
-      if ~isstruct(s2)
-        s2 = []; ## overwrite existing value
-      end
-      s2 = set(s2, rem(2:end), value);
+      if (~isstruct(s2))
+        s2 = []; # overwrite existing value
+      endif
+      s2 = set (s2, rem (2:end), value);
       
-      s = setfield(s, tok, s2); ## update in parent struct/object
+      s = setfield (s, tok, s2); # update in parent struct/object
 
-    end ## set
+    endfunction # set
     
     function v = get(s, varargin)
     ## -*- texinfo -*-
@@ -128,55 +128,55 @@ classdef (Abstract) hgsetget < handle
     ## @seealso{get}
     ## @end deftypefn
 
-      if nargin == 1, field=''; else field = varargin{1}; end
-      if isempty(field), v = fieldnames(s); return; end
+      if (nargin == 1), field=""; else field = varargin{1}; endif
+      if (isempty(field)), v = fieldnames(s); return; endif
       v = [];
       
       ## handle array of objects
-      if numel(s) > 1
+      if (numel(s) > 1)
         sout = {};
         for index=1:numel(s)
-          sout{end+1} = get(s(index), field);
-        end
-        sout = reshape(sout, size(s));
+          sout{end+1} = get (s (index), field);
+        endfor
+        sout = reshape (sout, size (s));
         v = sout; 
         return
-      end
+      endif
       
-      if ischar(field) && size(field, 1) > 1
-        field = cellstr(field);
-      end
+      if (ischar (field) && size (field, 1) > 1)
+        field = cellstr (field);
+      endif
       
       ## handle array/cell of fields
-      if iscellstr(field)
+      if (iscellstr (field))
         sout = {};
         for index=1:numel(field)
-          sout{end+1} = get(s, field{index});
-        end
-        sout = reshape(sout, size(field));
+          sout {end+1} = get (s, field {index});
+        endfor
+        sout = reshape (sout, size (field));
         v = sout; 
         return
-      end
+      endif
       
-      if ~ischar(field)
-        error([ mfilename ': GET: field to search in object must be a char or cellstr, not ' class(field) ]);
-      end
+      if (~ischar (field))
+        error ([ mfilename ": GET: field to search in object must be a char or cellstr, not " class (field) ]);
+      endif
       
       ## cut the field into pieces with '.' as separator
-      [tok, rem] = strtok(field, '.');
+      [tok, rem] = strtok (field, ".");
       
       ## get the highest level
-      v = getfield(s, tok);
-      if ~isempty(rem) && isstruct(v)
+      v = getfield (s, tok);
+      if (~isempty (rem) && isstruct (v))
         ## and access deeper content recursively
-        v = get(v, rem(2:end));
-      end
+        v = get (v, rem (2:end));
+      endif
   
-    end ## get
+    endfunction # get
     
-  end ## methods
+  end # methods
     
-end ## classdef
+end # classdef
 
 ## No test possible for superclass
-##!assert (1)
+#!assert (1)
