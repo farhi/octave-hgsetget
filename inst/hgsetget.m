@@ -174,9 +174,21 @@ classdef (Abstract) hgsetget < handle
   
     endfunction # get
     
-  end # methods
+  endmethods # methods
     
-end # classdef
+endclassdef # classdef
 
-## No test possible for superclass
-#!assert (1)
+## Tests for hgsetget
+%!classdef hgsetget_class < hgsetget
+%!  properties
+%!    field1
+%!  endproperties
+%!classdef
+
+%!test
+%!  obj = hgsetget_class;
+%!  obj.field1= 42;
+%!  assert (obj.field1, 42)
+%!  set (obj,"field1", -42);
+%!  assert (get (obj, "field1"), -42)
+
