@@ -179,11 +179,11 @@ classdef (Abstract) hgsetget < handle
 endclassdef # classdef
 
 ## Tests for hgsetget
-%!classdef hgsetget_class < hgsetget
-%!  properties
-%!    field1
-%!  endproperties
-%!classdef
+%!  classdef hgsetget_class < hgsetget
+%!    properties
+%!      field1
+%!    endproperties
+%!  classdef
 
 %!test
 %!  obj = hgsetget_class;
