@@ -183,7 +183,7 @@ endclassdef # classdef
 %!    properties
 %!      field1
 %!    endproperties
-%!  classdef
+%!  endclassdef
 
 %!test
 %!  obj = hgsetget_class;
